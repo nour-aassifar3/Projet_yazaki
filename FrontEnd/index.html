@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT Dashboard</title>
+    <link rel="stylesheet" href="style.css?v=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css?v=2" integrity="sha384-0d5jZ0z4wKZ2YVf6TzA/1E+2oUUGe1yRcFZp6/NV9B5X/hY7KwQ/5Qpbn5epw5Ck" crossorigin="anonymous">
+</head>
+<body>
+    <header class="top-header">
+        <img style="margin-top: 15px;" src="YazakiLogo.png" alt="Yazaki Logo" class="company-logo">
+        <div class="header-actions">
+            <img src="" alt="Profile" class="profile-icon">
+            <button class="logout-button"><i class="fas fa-sign-out-alt"></i></button>
+        </div>
+    </header>
+    <hr>
+    <aside class="sidebar">
+        <nav>
+            <a href="#" class="nav-link" id="home-link"><i class="fas fa-home"></i><span class="nav-text"> Home</span></a>
+            <a href="#" class="nav-link" id="devices-link"><i class="fas fa-laptop"></i><span class="nav-text"> Devices</span></a>
+            <a href="#" class="nav-link" id="data-visualization-link"><i class="fas fa-chart-bar"></i><span class="nav-text"> Data Visualization</span></a>
+            <a href="#" class="nav-link" id="settings-link"><i class="fas fa-cog"></i><span class="nav-text"> Settings</span></a>
+        </nav>
+    </aside>
+    <main class="content">
+        <div id="home-section" class="section">
+            <h2 style="margin-left: 53px;">Device Tracking</h2>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <table id="device-table" style="width: 60%; border-collapse: collapse;">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Last Activity</th>
+                            <th>Temperature</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="device-list"> </tbody>
+                </table>
+                <div style="text-align: center; width: 30%; height: 200px;">
+                    <h3 style="margin-right: 120PX;">Device Status</h3>
+                    <canvas id="deviceStatusChart" style="width: 150px; height: 150px;"></canvas>
+                </div>
+            </div>
+        </div>
+        <div id="devices-section" class="section" style="display:none;">
+            <h2>Devices Monitoring</h2>
+            <div id="edit-device-form" class="section" style="display: none;">
+                <h2>Edit Device</h2>
+                <form id="edit-form">
+                    <label for="device-name">Device Name:</label>
+                    <input type="text" id="device-name" name="name" required>
+                    
+                    <label for="device-status">Status:</label>
+                    <select id="device-status" name="status">
+                        <option value="on">On</option>
+                        <option value="off">Off</option>
+                    </select>
+                    
+                    <button type="submit">Update Device</button>
+                    <button type="button" id="cancel-edit">Cancel</button>
+                </form>
+            </div>
+            <div id="devices-list">
+                <div id="devices-container" class="devices-grid"></div>
+            </div>
+        </div>
+        <div id="data-visualization-section" class="section" style="display:none;">
+            <h2>Data Temps Réel</h2>
+            <div>
+                <div>
+                    <h3>Température</h3>
+                    <canvas id="temperatureChart"></canvas>
+                </div>
+                <div >
+                    <canvas id="uptimeChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer style="background-color: #D3D3D3; color: black; padding: 15px; text-align: center; font-size: 0.9rem;">
+        <p>&copy; 2024 IoT Dashboard All rights reserved.</p>
+    </footer>
+    <script src="index.js"></script>
+</body>
+</html>
